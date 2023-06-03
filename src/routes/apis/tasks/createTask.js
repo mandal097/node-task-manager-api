@@ -6,7 +6,7 @@ const router = require("express").Router();
 
 //create Task  @http://localhost:5000/api/v1/Task/create
 router.post('/', async (req, res) => {
-    const userId = req.payload.id; //id of loged in user from middleware
+    // const userId = req.payload.id; //id of loged in user from middleware
     const { topic, desc } = req.body;
     if (!topic || !desc) {
         return res.json({
@@ -18,7 +18,6 @@ router.post('/', async (req, res) => {
         const newTask = new Task({
             topic,
             desc,
-            userId
         })
         const savedTask = await newTask.save();
         return res.json({
